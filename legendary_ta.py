@@ -33,8 +33,12 @@ from pandas import DataFrame, Series
             # dataframe["lelec_major"]                  = 1 (Up) / -1 (Down) Direction
             # dataframe["lelec_minor"]                  = 1 Sellers exhausted / 0 Hold / -1 Buyers exhausted 
             
+            # Stochastic Momentum Index
+            dataframe = lta.smi_momentum(dataframe)
+            # dataframe["smi"]                          Float (SMI)
+            
             # Pinbar Reversals
-            dataframe = lta.pinbar(dataframe, smi)
+            dataframe = lta.pinbar(dataframe, dataframe["smi"])
             # dataframe["pinbar_buy"]                   Bool
             # dataframe["pinbar_sell"]                  Bool
             
@@ -48,10 +52,6 @@ from pandas import DataFrame, Series
             # dataframe['potential_support_retest']     Bool
             # dataframe['resistance_retest']            Bool
             # dataframe['potential_resistance_retest']  Bool
-            
-            # Stochastic Momentum Index
-            dataframe = lta.smi_momentum(dataframe)
-            # dataframe["smi"]                          Float (SMI)
             
 """
 
